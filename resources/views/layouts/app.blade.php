@@ -92,9 +92,14 @@
                                     <li class="list-group-item">
                                         <a href="{{ route('channels.index') }}"><strong>Manager Channels</strong></a>
                                     </li>
+
                                     <li class="list-group-item">
                                         <a href="{{ route('forums.index') }}"><strong>Manager Discussions</strong></a>
-                                    </li>                                       
+                                    </li>
+
+                                    {{--  <li class="list-group-item">
+                                        <a href="{{ route('discussion.manager') }}"><strong>Manager Discussions</strong></a>
+                                    </li>                                           --}}
                                 </div>
                                 @endif
                                 <div class="card-header">

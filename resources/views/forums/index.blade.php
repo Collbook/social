@@ -29,11 +29,19 @@
                                 <img height="50" src="uploads/avatars/{{ $discussion->user->avatar }}" alt="{{ $discussion->user->name }}">
                                 <span class="text-success"> <strong>{{ $discussion->user->name }} - </strong><small><b>{{ date('d-m-Y', strtotime($discussion->created_at))
                                     }}</b></small></span>
-                                
+
+                                @if (Auth::user()->admin)
+                                    <a   class="btn btn-sm btn-info " style="margin-left:8px" href="{{ route('discussions.edit',['id'=>$discussion->id]) }}">Edit</a>
+                                    <form action="{{ route('discussions.destroy',$discussion->id) }}" method="POST" >
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" value="Delete" class="btn btn-danger btn-sm float-right fix float-right" style="margin-left:8px">
+                                    </form>
+                                @endif
                                 @if ($discussion->hasBestAnswer())
                                     <a target="_blank" class="btn btn-sm btn-success float-right" style="margin-left:8px" href="#">Close </a>
                                 @else
-                                    <a target="_blank" class="btn btn-sm btn-danger float-right" style="margin-left:8px" href="#">Open </a>
+                                    <a target="_blank" class="btn btn-sm btn-warning float-right" style="margin-left:8px" href="#">Open </a>
                                 @endif
 
                                 <a target="_blank" class="btn btn-sm btn-primary float-right" href="{{ route('discussions.show',['slug'=>$discussion->slug]) }}">View <span class="badge badge-light"> {{ $discussion->replies->count() }} replies</small> </span> </a>

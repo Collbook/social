@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('channels', 'ChannelsController');
 
     Route::resource('discussions', 'DiscussionController');
+    //Route::get('discussions/manager', 'DiscussionController@manager')->name('discussion.manager');
     Route::post('discussions/reply/{id}','DiscussionController@reply')->name('discussion.reply');
     Route::get('discussions/watch/{id}','WatchersController@watch')->name('discussion.watch');
     Route::get('discussions/unwatch/{id}','WatchersController@unwatch')->name('discussion.unwatch');

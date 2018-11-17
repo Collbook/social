@@ -12,6 +12,7 @@ use App\Notifications\NewReplyAdded;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
+
 class DiscussionController extends Controller
 {
     /**
@@ -106,6 +107,8 @@ class DiscussionController extends Controller
     public function show($slug)
     {
         $discussion = Discussion::where('slug',$slug)->first();
+
+        //$data = Markdown::convertToHtml($discussion);
         
         return view('discussions.show')->with('discussion',$discussion);
     }
